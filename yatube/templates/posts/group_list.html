@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+{% block name_plate %}
+  <div class="container">        
+    <h1> {{ group }} </h1>
+    <p>
+      {{group.description}}
+    </p>
+  <div/>      
+{% endblock %}
+
+
+{% block content %}
+      <!-- класс py-5 создает отступы сверху и снизу блока -->
+      <div class="container">     
+        {% for post in posts %}
+        <ul>
+          <li>
+            Автор: {{ post.author.get_full_name }}
+          </li>
+          <li>
+            Дата публикации: {{ post.pub_date|date:"d E Y" }}
+          </li>
+        </ul>
+        <p>{{ post.text }}</p>    
+        <a href="">все записи группы</a>
+        {% if not forloop.last %}<hr>{% endif %}
+      {% endfor %} 
+      </div>  
+{% endblock %} 
